@@ -29,11 +29,11 @@ load(url("https://github.com/anyone-can-cook/rclass2/raw/main/data/recruiting/re
 # + `visits_by_110635` = UC Berkeley
 
 df_univ <- df_school %>% 
-  mutate(visited = if_else(visits_by_100751 >= 1, 1, 0)) %>% 
-  filter(state_code == inst_100751) %>% 
+  mutate(visited = if_else(visits_by_110635 >= 1, 1, 0)) %>% 
+  filter(state_code == inst_110635) %>% 
   select(ncessch, total_students, avgmedian_inc_2564, visited)
 
-png(file.path(plots_dir, 'scatterplot_alabama.png'))
+png(file.path(plots_dir, 'scatterplot_ucberkeley.png'))
 ggplot(data = df_univ, aes(x = total_students, y = avgmedian_inc_2564, color = as.factor(visited))) +
   geom_point() +
   xlab('Total enrollment') + ylab('Average median income') +
