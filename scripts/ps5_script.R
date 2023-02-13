@@ -29,7 +29,7 @@ load(url("https://github.com/anyone-can-cook/rclass2/raw/main/data/recruiting/re
 # + `visits_by_110635` = UC Berkeley
 
 df_univ <- df_school %>% 
-  mutate(visited = if_else(visits_by_126614 >= 1, 1, 0)) %>% 
+mutate(visited = if_else(visits_by_126614 >= 1, 1, 0)) %>% 
   filter(state_code == inst_126614) %>% 
   select(ncessch, total_students, avgmedian_inc_2564, visited)
 
