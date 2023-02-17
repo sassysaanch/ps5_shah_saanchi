@@ -12,7 +12,8 @@
 ## ---------------------------
 
 library(tidyverse)
-
+library(dplyr)
+library(ggplot2)
 ## ---------------------------
 ## directory paths
 ## ---------------------------
@@ -39,6 +40,25 @@ ggplot(data = df_univ, aes(x = total_students, y = avgmedian_inc_2564, color = a
   xlab('Total enrollment') + ylab('Average median income') +
   scale_color_discrete(name = 'Recruitment Visits', labels = c('No visits', 'Visits'))
 dev.off()
+
+
+## -----------------------------------------------------------------------------
+## Part 3 - Extra Credit
+## -----------------------------------------------------------------------------
+
+png(file.path(plots_dir, 'schoollunch.png'))
+df_school %>% 
+  group_by(state_code) %>% 
+  filter(state_code %in% c( "AK", "AZ", "CA", "HI", "ID", "MT", "NV", "NM", "OR", "UT", "WA", "WY")) %>% 
+  select(school_type, avgmedian_inc_2564, state_code, num_fr_lunch) %>% 
+  ggplot(aes(x = school_type, y = num_fr_lunch)) +
+  geom_jitter(aes(color = state_code, alpha = 0.5)) +
+  ggtitle("Number of students who opt for school lunch by school type in
+          Western states") + 
+  xlab("School Type") +
+  ylab("Students who get school lunch")
+dev.off()
+
 
 ## -----------------------------------------------------------------------------
 ## END SCRIPT
