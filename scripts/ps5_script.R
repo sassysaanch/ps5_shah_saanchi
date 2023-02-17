@@ -52,11 +52,12 @@ df_school %>%
   filter(state_code %in% c( "AK", "AZ", "CA", "HI", "ID", "MT", "NV", "NM", "OR", "UT", "WA", "WY")) %>% 
   select(school_type, avgmedian_inc_2564, state_code, num_fr_lunch) %>% 
   ggplot(aes(x = school_type, y = num_fr_lunch)) +
-  geom_jitter(aes(color = state_code, alpha = 0.5)) +
+  geom_jitter(aes(color = state_code),  alpha = 0.5) +
   ggtitle("Number of students who opt for school lunch by school type in
           Western states") + 
   xlab("School Type") +
-  ylab("Students who get school lunch")
+  ylab("Students who get school lunch") +
+  labs(color = "State code")
 dev.off()
 
 
